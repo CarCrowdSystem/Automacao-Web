@@ -1,29 +1,38 @@
-pipeline{
+pipeline {
+   agent any
 
-    agent any
+   tools {nodejs "Node12"}
 
-    parameters{
-        string(name: 'SPEC', defaultValue: "cypress/integration/**/**", description: "Enter the script path that you want to execute")
-        choice(name: 'BROWSER', choices: def browsers = ['chrome', 'edge', 'firefox']) description: "Choice the browser where you want to execute your scripts"
-    }
+   environment {
+       CHROME_BIN = '/bin/google-chrome'
+      
+   }
 
-    options{
-        ansiColor('xterm')
-    }
+   stages {
+       stage('Dependencies') {
+           steps {
+               sh 'npm i'
+           }
+       }
+       stage('e2e Tests') {
+         Parallel{
+             stage('Test 1') {
+                  steps {
+                sh 'npm run cypress:ci'
+                  }
+               }
+             
+             stage('Test 2') {
+                  steps {
+                sh 'npm run cypress2:ci'
+                  }
+               }
 
-    stages{
-        stage('Building'){
-            echo "Building the application"
-        }
-        stage('Testing'){
-            steps{
-                sh "npm i"
-                sh "npx cypress run --browser ${BROWSER} --spec ${SPEC}" 
-            }
-        }
-        stage('Deploying'){
-            echo "Deploy the application"
-        }
-    }
-
+       }
+       stage('Deploy') {
+           steps {
+               echo 'Deploying....'
+           }
+       }
+   }
 }

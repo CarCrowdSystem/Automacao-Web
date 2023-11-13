@@ -1,29 +1,33 @@
-pipeline {
-   agent any
-
-   tools {nodejs "Node12"}
-
-   environment {
-       CHROME_BIN = '/bin/google-chrome'
-      
-   }
-
-   stages {
-       stage('Dependencies') {
-           steps {
-               sh 'npm i'
-           }
-       }
-       stage('e2e Tests') {
-            steps {
-                sh 'npm run cypress'
-                  }
-               }
-             
-       stage('Deploy') {
-           steps {
-               echo 'Deploying....'
-           }
-       }
-   }
+pipeline {     
+    agent any     
+    stages {         
+        stage('Install Dependencies') {             
+            steps {                 
+                script {                     
+                    nodejs(nodeJSInstallationName: 'NomeDaSuaInstalacaoNodeJS', configId: 'sua-configuracao-nodejs') {                         
+                        sh 'npm install'                     
+                        }                 
+                    }             
+                }         
+            }         
+            stage('Run Tests') {             
+                steps {                 
+                    script {                     
+                        sh './node_modules/.bin/cypress run'                 
+                        }             
+                    }         
+                }         
+                stage('Cucumber Reports') {             
+                    steps {                 
+                        script {                     
+                            cucumber 'cypress/reports/json/*.json'                 
+                        }             
+                    }         
+                }     
+            }     
+            post {         
+                always {             
+                    cucumber 'cypress/reports/json/*.json'         
+                }     
+        } 
 }

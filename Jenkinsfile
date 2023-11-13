@@ -1,5 +1,8 @@
 pipeline {     
-    agent any     
+    agent any 
+    tools {
+        git 'Git'
+    }    
     stages {         
         stage('Install Dependencies') {             
             steps {                 

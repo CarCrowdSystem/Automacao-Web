@@ -3,12 +3,10 @@ pipeline {
     stages {         
         stage('Install Dependencies') {             
             steps {                 
-                script {                     
-                    nodejs(nodeJSInstallationName: 'NomeDaSuaInstalacaoNodeJS', configId: 'sua-configuracao-nodejs') {                         
-                        sh 'npm install'                     
-                        }                 
-                    }             
-                }         
+                    script {                     
+                        sh 'npm install'                 
+                        }             
+                    }         
             }         
             stage('Run Tests') {             
                 steps {                 

@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open --browser chrome --e2e",
+    "cypress:runDefault": "cypress run --spec cypress/integration/pom/*.spec.js",
+    "cypress:chrome": "cypress run --browser chrome --spec cypress/integration/pom/*.spec.js",
+    "cypress:edge": "cypress run --browser edge --spec cypress/integration/pom/*.spec.js"
   },
   "author": "",
   "license": "ISC",

@@ -14,7 +14,7 @@ pipeline{
         stage('Testing'){
             steps{
                 sh "npm i"
-                sh "npx cypress run --browser edge --spec cypress/integration/**/**"
+                sh "npx cypress run --browser chrome --spec cypress/integration/**/**"
             }
         }
         stage('Deploy'){

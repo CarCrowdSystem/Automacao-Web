@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "cypress:open": "cypress open --browser chrome --e2e",
     "cypress:runDefault": "cypress run --spec cypress/integration/pom/*.spec.js",
-    "cypress:chrome": "cypress run --browser chrome --spec cypress/integration/pom/*.spec.js",
+    "cypress:chrome": "cypress run --headless --browser chrome --spec cypress/integration/pom/*.spec.js",
     "cypress:edge": "cypress run --browser edge --spec cypress/integration/pom/*.spec.js"
   },
   "author": "",

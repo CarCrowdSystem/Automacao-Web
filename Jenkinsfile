@@ -1,11 +1,6 @@
 pipeline{
     agent any
 
-    parameters{
-        string(name: "SPEC", defaultValue: "cypress/integration/**/**", description: "spec")
-        choice(name: "BROWSER", choices ['chrome', 'edge', 'firefox'], description:"browsers")
-    }
-
     options{
         ansiColor('xterm')
     }
@@ -19,7 +14,7 @@ pipeline{
         stage('Testing'){
             steps{
                 sh "npm i"
-                sh "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
+                sh "npx cypress run --browser edge --spec cypress/integration/**/**"
             }
         }
         stage('Deploy'){

@@ -24,6 +24,10 @@ class LoginPage {
         loginElements.tituloDashboard()
     }
 
+    validarTextoEmailOuSenhaInvalido() {
+        loginElements.textoEmailOuSenhaInvalido()
+    }
+
 }
 
 export default LoginPage

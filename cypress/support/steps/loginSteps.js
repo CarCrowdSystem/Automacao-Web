@@ -28,6 +28,10 @@ class LoginStep{
         loginPage.validarTituloDash()
     }
 
+    EntaoDeveAparecerUmModalDeEmailOuSenhaInvalido(){
+        loginPage.validarTextoEmailOuSenhaInvalido()
+    }
+
 }
 
 export default LoginStep

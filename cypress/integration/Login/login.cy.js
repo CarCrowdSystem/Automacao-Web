@@ -13,7 +13,7 @@ describe('Login', () => {
     it('Entrar na plataforma com login invalido', () => {
         loginStep.DadoQueEstejaNaPaginaDeLogin()
         loginStep.QuandoInserirEmailESenhaInvalidoEClicarEmEntrar()
-        
+        loginStep.EntaoDeveAparecerUmModalDeEmailOuSenhaInvalido()
     })
 
 })

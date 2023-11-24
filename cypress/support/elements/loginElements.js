@@ -20,6 +20,10 @@ class LoginElements {
         return cy.contains('Dashboard', {timeout:10000}).should('be.visible')
     }
 
+    textoEmailOuSenhaInvalido = () => {
+        return cy.contains('Email ou senha inválidos!').should('be.visible')
+    }
+
 }
 
 export default LoginElements

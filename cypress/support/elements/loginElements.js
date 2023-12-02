@@ -13,7 +13,7 @@ class LoginElements {
     }
 
     botaoEntrar = () => {
-        return cy.get('button[class="botao"]').should('be.visible')
+        return cy.get('button[class="btn-entrar-login"]').should('be.visible')
     }
 
     tituloDashboard = () => {
@@ -21,7 +21,7 @@ class LoginElements {
     }
 
     textoEmailOuSenhaInvalido = () => {
-        return cy.contains('Email ou senha inválidos!').should('be.visible')
+        return cy.contains('E-mail ou senha inválidos!', {timeout:10000}).should('be.visible')
     }
 
 }
